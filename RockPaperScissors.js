@@ -53,10 +53,10 @@ function playGame(){
     }
   }
   if (UScore > CScore) {
-    console.log("Congratulations, you win!")
+    console.log("Congratulations, you won with " + UScore + " points to " + CScore)
   }
   else {
-    console.log("Bad luck, you lost. Better luck next time.")
+    console.log("Bad luck, you lost " + CScore + " points to " + CScore + " Better luck next time.")
   }
 }
 
