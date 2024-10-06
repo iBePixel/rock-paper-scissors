@@ -7,6 +7,8 @@ let CScore = 0;
 let UScore = 0;
 
 
+const scores = document.createElement('div');
+
 function getComputerChoice() {
   CGuess = "";
   num = Math.random();
@@ -18,25 +20,7 @@ function getComputerChoice() {
     CGuess = "scissors";
   }
   return CGuess;
-}
-
-let uChoice = document.querySelector(button);
-
-uChoice.addEventListener('Click', (click) => {
-  let choice = click.target;
-
-  switch(choice.id){
-    case 'rock':
-      UGuess = 'rock';
-      break;
-    case 'paper':
-      UGuess = 'paper';
-      break;
-    case 'scissors':
-      UGuess = 'scissors';
-      break;
-  }
-});
+};
 
 function playRound(userChoice, computerChoice) {
   
@@ -47,29 +31,49 @@ function playRound(userChoice, computerChoice) {
   else if (userChoice == 'rock' && computerChoice == 'scissors' || userChoice == 'scissors' && computerChoice == 'paper' || userChoice == 'paper' && computerChoice == 'rock'){
     UScore++;
     console.log("You win " + userChoice + " beats " + computerChoice)
+    if (UScore == 5){
+      alert('Congratulations, you win!')
+    }
   }
   else {
     CScore++;
     console.log("You lose " + computerChoice + " beats " + userChoice)
+    if (CScore == 5){
+      alert('Commiserations, you lose!')
+    }
   }
-}
+};
 
 
 function playGame(){
-  for (let i = 0; i < 5; i++) {
-    let userSelection = getUserChoice();
+    let userSelection = UGuess;
     let computerSelection = getComputerChoice();
     let result = playRound(userSelection, computerSelection);
-    if (result == "draw"){
-      i = i - 1;
-    }
-  }
-  if (UScore > CScore) {
-    console.log("Congratulations, you won with " + UScore + " points to " + CScore)
-  }
-  else {
-    console.log("Bad luck, you lost " + CScore + " points to " + CScore + " Better luck next time.")
-  }
-}
+    scores.textContent = "Your score is " + UScore + " Computer score is " + CScore;
+    buttons.appendChild(scores);
+};
 
-playGame()
+let rock = document.querySelector('#rock');
+
+rock.addEventListener('click', () => {
+  UGuess = 'rock';
+  playGame(UGuess, CGuess);
+});
+
+let paper = document.querySelector('#paper');
+
+paper.addEventListener('click', () => {
+  UGuess = 'paper';
+  playGame(UGuess, CGuess);
+});
+
+let scissors = document.querySelector('#scissors');
+
+scissors.addEventListener('click', () => {
+  UGuess = 'scissors';
+  playGame(UGuess, CGuess);
+});
+
+
+scores.textContent = "Your score is " + UScore + " Computer score is " + CScore;
+buttons.appendChild(scores);
