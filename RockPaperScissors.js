@@ -20,11 +20,23 @@ function getComputerChoice() {
   return CGuess;
 }
 
-function getUserChoice() {
-  let UChoice = prompt("Enter your choice. Rock, Paper or Scissors");
-  UChoice = UChoice.toLowerCase()
-  return UChoice
-}
+let uChoice = document.querySelector(button);
+
+uChoice.addEventListener('Click', (click) => {
+  let choice = click.target;
+
+  switch(choice.id){
+    case 'rock':
+      UGuess = 'rock';
+      break;
+    case 'paper':
+      UGuess = 'paper';
+      break;
+    case 'scissors':
+      UGuess = 'scissors';
+      break;
+  }
+});
 
 function playRound(userChoice, computerChoice) {
   
