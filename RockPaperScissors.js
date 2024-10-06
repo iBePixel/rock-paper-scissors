@@ -25,19 +25,16 @@ function getComputerChoice() {
 function playRound(userChoice, computerChoice) {
   
   if (userChoice == computerChoice){
-    console.log("It's a draw, try again")
     return "draw";
   }
   else if (userChoice == 'rock' && computerChoice == 'scissors' || userChoice == 'scissors' && computerChoice == 'paper' || userChoice == 'paper' && computerChoice == 'rock'){
     UScore++;
-    console.log("You win " + userChoice + " beats " + computerChoice)
     if (UScore == 5){
       alert('Congratulations, you win!')
     }
   }
   else {
     CScore++;
-    console.log("You lose " + computerChoice + " beats " + userChoice)
     if (CScore == 5){
       alert('Commiserations, you lose!')
     }
